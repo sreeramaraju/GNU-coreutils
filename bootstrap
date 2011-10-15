@@ -1187,7 +1187,7 @@ for tool in autoconf libtoolize autopoint; do
   case $tool in
     autoconf) m=AC_PREREQ ;;
     libtoolize) m=LT_PREREQ; b=libtool ;;
-    autopoint) m=AM_GNU_GETTEXT_VERSION ;;
+    autopoint) m=AM_GNU_GETTEXT_VERSION b=gettext ;;
   esac
 
   eval $v'='$f'
