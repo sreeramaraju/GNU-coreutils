@@ -1175,19 +1175,19 @@ func_require_autobuild_buildreq ()
 
 
 # require_autoconf_buildreq
-# require_gettext_buildreq
+# require_autopoint_buildreq
 # require_libtoolize_buildreq
 # ---------------------------
 # Try to find the minimum compatible version of autoconf/libtool
 # required to bootstrap successfully, and add it to `$buildreq'.
-for tool in autoconf libtoolize gettext; do
+for tool in autoconf libtoolize autopoint; do
   b=$tool
   v=require_${tool}_buildreq
   f=func_$v
   case $tool in
     autoconf) m=AC_PREREQ ;;
     libtoolize) m=LT_PREREQ; b=libtool ;;
-    gettext) m=AM_GNU_GETTEXT_VERSION ;;
+    autopoint) m=AM_GNU_GETTEXT_VERSION ;;
   esac
 
   eval $v'='$f'
@@ -1371,7 +1371,7 @@ func_require_buildtools_uptodate ()
     $require_autoconf_buildreq
     $require_automake_buildreq
     $require_libtoolize_buildreq
-    $require_gettext_buildreq
+    $require_autopoint_buildreq
 
     test -n "$buildreq" && {
       func_check_versions $buildreq
